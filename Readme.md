@@ -1,3 +1,8 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Form1.cs](./CS/Dashboard_CreateGrid/Form1.cs) (VB: [Form1.vb](./VB/Dashboard_CreateGrid/Form1.vb))
+<!-- default file list end -->
 # How to create a new Dashboard, add a Grid dashboard item to it and bind it to data in code
 
 
