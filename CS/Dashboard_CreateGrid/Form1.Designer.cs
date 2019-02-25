@@ -35,6 +35,7 @@
             this.dashboardViewer1.Name = "dashboardViewer1";
             this.dashboardViewer1.Size = new System.Drawing.Size(1139, 660);
             this.dashboardViewer1.TabIndex = 0;
+            this.dashboardViewer1.UseNeutralFilterMode = true;
             // 
             // Form1
             // 
