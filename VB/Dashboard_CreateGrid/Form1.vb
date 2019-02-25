@@ -2,48 +2,59 @@
 Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
 Imports DevExpress.DataAccess
+Imports DevExpress.DataAccess.Excel
+Imports DevExpress.XtraEditors
 
 Namespace Dashboard_CreateGrid
-    Partial Public Class Form1
-        Inherits Form
+	Partial Public Class Form1
+		Inherits XtraForm
 
-        Public Sub New()
-            InitializeComponent()
-        End Sub
-        Private Function CreateGrid(ByVal dataSource As DashboardObjectDataSource) As GridDashboardItem
+		Public Sub New()
+			InitializeComponent()
+		End Sub
+		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-            ' Creates a grid dashboard item and specifies its data source.
-            Dim grid As New GridDashboardItem()
-            grid.DataSource = dataSource
+			' Creates the Excel data source.
+			Dim excelDataSource As New DashboardExcelDataSource()
+			excelDataSource = CreateExcelDataSource()
 
-            ' Creates new grid columns of the specified type and with the specified dimension or
-            ' measure. Then, adds these columns to the grid's Columns collection.
-            grid.Columns.Add(New GridDimensionColumn(New Dimension("CategoryName")))
-            grid.Columns.Add(New GridMeasureColumn(New Measure("Extended Price")))
-            grid.Columns.Add(New GridDeltaColumn(New Measure("Extended Price", SummaryType.Max), _
-                                                 New Measure("Extended Price", SummaryType.Min)))
-            grid.Columns.Add(New GridSparklineColumn(New Measure("Extended Price")))
-            grid.SparklineArgument = New Dimension("OrderDate", DateTimeGroupInterval.MonthYear)
+			' Creates the Grid dashboard item and adds it to a dashboard.
+			dashboardViewer1.Dashboard = New Dashboard()
+			dashboardViewer1.Dashboard.DataSources.Add(excelDataSource)
+			Dim grid As GridDashboardItem = CreateGrid(excelDataSource)
+			dashboardViewer1.Dashboard.Items.Add(grid)
 
-            Return grid
-        End Function
-        Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+			' Reloads data in the data sources.
+			dashboardViewer1.ReloadData()
+		End Sub
+		Private Function CreateGrid(ByVal dataSource As DashboardExcelDataSource) As GridDashboardItem
 
-            ' Creates a dashboard and sets it as a currently opened dashboard in the dashboard viewer.
-            dashboardViewer1.Dashboard = New Dashboard()
+			' Creates a grid dashboard item and specifies its data source.
+			Dim grid As New GridDashboardItem()
+			grid.DataSource = dataSource
 
-            ' Creates a data source and adds it to the dashboard data source collection.
-            Dim dataSource As New DashboardObjectDataSource()
-            dataSource.DataSource = (New nwindDataSetTableAdapters.SalesPersonTableAdapter()).GetData()
-            dashboardViewer1.Dashboard.DataSources.Add(dataSource)
+			' Creates new grid columns of the specified type and with the specified dimension or
+			' measure. Then, adds these columns to the grid's Columns collection.
+			grid.Columns.Add(New GridDimensionColumn(New Dimension("Category")))
+			grid.Columns.Add(New GridHyperlinkColumn(New Dimension("Product"), "https://www.google.com/search?q={0}"))
+			grid.Columns.Add(New GridMeasureColumn(New Measure("Count")))
+			grid.Columns.Add(New GridDeltaColumn(New Measure("Count"), New Measure("TargetCount")))
+			grid.Columns.Add(New GridSparklineColumn(New Measure("Count")))
+			grid.SparklineArgument = New Dimension("Date", DateTimeGroupInterval.MonthYear)
 
-            ' Creates a grid dashboard item with the specified data source 
-            ' and adds it to the Items collection to display within the dashboard.
-            Dim grid As GridDashboardItem = CreateGrid(dataSource)
-            dashboardViewer1.Dashboard.Items.Add(grid)
+			Return grid
+		End Function
 
-            ' Reloads data in the data sources.
-            dashboardViewer1.ReloadData()
-        End Sub
-    End Class
+		Public Function CreateExcelDataSource() As DashboardExcelDataSource
+
+			' Generates the Excel Data Source.
+			Dim excelDataSource As New DashboardExcelDataSource()
+			excelDataSource.FileName = "Data\SimpleDataSource.xls"
+			Dim worksheetSettings As New ExcelWorksheetSettings("Simple Data", "A1:F12")
+			excelDataSource.SourceOptions = New ExcelSourceOptions(worksheetSettings)
+			excelDataSource.Fill()
+
+			Return excelDataSource
+		End Function
+	End Class
 End Namespace
