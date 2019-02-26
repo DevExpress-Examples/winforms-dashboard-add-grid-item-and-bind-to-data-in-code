@@ -23,36 +23,38 @@
 		''' the contents of this method with the code editor.
 		''' </summary>
 		Private Sub InitializeComponent()
-            Me.components = New System.ComponentModel.Container()
-            Me.dashboardViewer1 = New DevExpress.DashboardWin.DashboardViewer(Me.components)
-            CType(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.SuspendLayout()
-            '
-            'dashboardViewer1
-            '
-            Me.dashboardViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.dashboardViewer1.Location = New System.Drawing.Point(0, 0)
-            Me.dashboardViewer1.Name = "dashboardViewer1"
-            Me.dashboardViewer1.Size = New System.Drawing.Size(648, 418)
-            Me.dashboardViewer1.TabIndex = 0
-            Me.dashboardViewer1.UseNeutralFilterMode = True
-            '
-            'Form1
-            '
-            Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-            Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-            Me.ClientSize = New System.Drawing.Size(648, 418)
-            Me.Controls.Add(Me.dashboardViewer1)
-            Me.Name = "Form1"
-            Me.Text = "Dashboard Viewer"
-            CType(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.ResumeLayout(False)
+			Me.components = New System.ComponentModel.Container()
+			Me.dashboardViewer1 = New DevExpress.DashboardWin.DashboardViewer(Me.components)
+			CType(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).BeginInit()
+			Me.SuspendLayout()
+			' 
+			' dashboardViewer1
+			' 
+			Me.dashboardViewer1.Dock = System.Windows.Forms.DockStyle.Fill
+			Me.dashboardViewer1.Location = New System.Drawing.Point(0, 0)
+			Me.dashboardViewer1.Name = "dashboardViewer1"
+			Me.dashboardViewer1.Size = New System.Drawing.Size(638, 428)
+			Me.dashboardViewer1.TabIndex = 0
+			Me.dashboardViewer1.UseNeutralFilterMode = True
+			' 
+			' Form1
+			' 
+			Me.AutoScaleDimensions = New System.Drawing.SizeF(6F, 13F)
+			Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+			Me.ClientSize = New System.Drawing.Size(638, 428)
+			Me.Controls.Add(Me.dashboardViewer1)
+			Me.Name = "Form1"
+			Me.Text = "Dashboard Viewer"
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.Form1_Load);
+			CType(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).EndInit()
+			Me.ResumeLayout(False)
 
-        End Sub
+		End Sub
 
-#End Region
+		#End Region
 
-        Private dashboardViewer1 As DevExpress.DashboardWin.DashboardViewer
+		Private dashboardViewer1 As DevExpress.DashboardWin.DashboardViewer
 	End Class
 End Namespace
 
