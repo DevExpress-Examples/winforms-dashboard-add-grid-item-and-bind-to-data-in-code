@@ -1,6 +1,7 @@
+Imports System
+Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
-Imports DevExpress.DataAccess.Excel
-Imports DevExpress.XtraEditors
+Imports DevExpress.DataAccess
 
 Namespace Dashboard_CreateGrid
     Partial Public Class Form1
