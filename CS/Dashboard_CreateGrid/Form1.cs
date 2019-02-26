@@ -33,13 +33,17 @@ namespace Dashboard_CreateGrid {
 
             // Creates new grid columns of the specified type and with the specified dimension or
             // measure. Then, adds these columns to the grid's Columns collection.
+            grid.Columns.Add(new GridHyperlinkColumn(new Dimension("Product"), "Product") 
+                {UriPattern= "https://www.google.com/search?q={0}" });
             grid.Columns.Add(new GridDimensionColumn(new Dimension("Category")));
-            grid.Columns.Add(new GridHyperlinkColumn(new Dimension("Product"), "https://www.google.com/search?q={0}"));
             grid.Columns.Add(new GridMeasureColumn(new Measure("Count")));
             grid.Columns.Add(new GridDeltaColumn(new Measure("Count"),
                                                  new Measure("TargetCount")));
             grid.Columns.Add(new GridSparklineColumn(new Measure("Count")));
             grid.SparklineArgument = new Dimension("Date", DateTimeGroupInterval.MonthYear);
+
+            grid.GridOptions.EnableBandedRows = true;
+            grid.GridOptions.ShowHorizontalLines = false;           
 
             return grid;
         }
