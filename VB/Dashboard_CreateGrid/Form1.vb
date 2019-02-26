@@ -32,7 +32,8 @@ Namespace Dashboard_CreateGrid
 
 			' Creates new grid columns of the specified type and with the specified dimension or
 			' measure. Then, adds these columns to the grid's Columns collection.
-			grid.Columns.Add(New GridHyperlinkColumn(New Dimension("Product"), "Product") With {.UriPattern= "https://www.google.com/search?q={0}"})
+			grid.Columns.Add(New GridHyperlinkColumn(New Dimension("Product"), "Product") _
+					With {.UriPattern= "https://www.google.com/search?q={0}"})
 			grid.Columns.Add(New GridDimensionColumn(New Dimension("Category")))
 			grid.Columns.Add(New GridMeasureColumn(New Measure("Count")))
 			grid.Columns.Add(New GridDeltaColumn(New Measure("Count"), New Measure("TargetCount")))
