@@ -1,6 +1,7 @@
-Imports DevExpress.DashboardCommon
+﻿Imports DevExpress.DashboardCommon
 Imports DevExpress.DataAccess.Excel
 Imports DevExpress.XtraEditors
+Imports System
 
 Namespace Dashboard_CreateGrid
 	Partial Public Class Form1
@@ -8,6 +9,7 @@ Namespace Dashboard_CreateGrid
 
 		Public Sub New()
 			InitializeComponent()
+
 		End Sub
 		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
@@ -16,10 +18,11 @@ Namespace Dashboard_CreateGrid
 			excelDataSource = CreateExcelDataSource()
 
 			' Creates the Grid dashboard item and adds it to a dashboard.
-			dashboardViewer1.Dashboard = New Dashboard()
-			dashboardViewer1.Dashboard.DataSources.Add(excelDataSource)
+			Dim dashboard1 As New Dashboard()
+			dashboard1.DataSources.Add(excelDataSource)
 			Dim grid As GridDashboardItem = CreateGrid(excelDataSource)
-			dashboardViewer1.Dashboard.Items.Add(grid)
+			dashboard1.Items.Add(grid)
+			dashboardViewer1.Dashboard = dashboard1
 
 			' Reloads data in the data sources.
 			dashboardViewer1.ReloadData()
@@ -32,8 +35,7 @@ Namespace Dashboard_CreateGrid
 
 			' Creates new grid columns of the specified type and with the specified dimension or
 			' measure. Then, adds these columns to the grid's Columns collection.
-			grid.Columns.Add(New GridHyperlinkColumn(New Dimension("Product"), "Product") _
-					With {.UriPattern= "https://www.google.com/search?q={0}"})
+			grid.Columns.Add(New GridHyperlinkColumn(New Dimension("Product"), "Product") With {.UriPattern= "https://www.google.com/search?q={0}"})
 			grid.Columns.Add(New GridDimensionColumn(New Dimension("Category")))
 			grid.Columns.Add(New GridMeasureColumn(New Measure("Count")))
 			grid.Columns.Add(New GridDeltaColumn(New Measure("Count"), New Measure("TargetCount")))

@@ -25,7 +25,7 @@
 		Private Sub InitializeComponent()
 			Me.components = New System.ComponentModel.Container()
 			Me.dashboardViewer1 = New DevExpress.DashboardWin.DashboardViewer(Me.components)
-			CType(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).BeginInit()
+			DirectCast(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).BeginInit()
 			Me.SuspendLayout()
 			' 
 			' dashboardViewer1
@@ -47,7 +47,7 @@
 			Me.Text = "Dashboard Viewer"
 'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
 'ORIGINAL LINE: this.Load += new System.EventHandler(this.Form1_Load);
-			CType(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).EndInit()
+			DirectCast(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).EndInit()
 			Me.ResumeLayout(False)
 
 		End Sub

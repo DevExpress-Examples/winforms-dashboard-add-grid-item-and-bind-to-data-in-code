@@ -7,6 +7,7 @@ namespace Dashboard_CreateGrid {
     public partial class Form1 : XtraForm {
         public Form1() {
             InitializeComponent();
+
         }
         private void Form1_Load(object sender, EventArgs e) {
 
@@ -15,10 +16,11 @@ namespace Dashboard_CreateGrid {
             excelDataSource = CreateExcelDataSource();
 
             // Creates the Grid dashboard item and adds it to a dashboard.
-            dashboardViewer1.Dashboard = new Dashboard();
-            dashboardViewer1.Dashboard.DataSources.Add(excelDataSource);
+            Dashboard dashboard1 = new Dashboard();
+            dashboard1.DataSources.Add(excelDataSource);
             GridDashboardItem grid = CreateGrid(excelDataSource);
-            dashboardViewer1.Dashboard.Items.Add(grid);
+            dashboard1.Items.Add(grid);
+            dashboardViewer1.Dashboard = dashboard1;
 
             // Reloads data in the data sources.
             dashboardViewer1.ReloadData();
