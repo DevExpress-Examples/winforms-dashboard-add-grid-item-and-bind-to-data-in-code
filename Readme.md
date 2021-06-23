@@ -4,7 +4,7 @@
 * [Form1.cs](./CS/Dashboard_CreateGrid/Form1.cs) (VB: [Form1.vb](./VB/Dashboard_CreateGrid/Form1.vb))
 <!-- default file list end -->
 
-# How to Add a Grid Item to a Dashboard and Bind it to Data at Runtime
+# Dashboard for WinForms - How to Add a Grid Item to a Dashboard and Bind it to Data at Runtime
 
 The following example shows how to create Grid columns and bind a [Grid dashboard item](https://docs.devexpress.com/Dashboard/15150) to data in code.
 
