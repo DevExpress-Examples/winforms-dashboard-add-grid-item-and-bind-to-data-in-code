@@ -13,7 +13,7 @@ As a result, you get the Grid dashboard item with columns created at runtime:
 ![](/images/grid-with-columns.png)
 
 <!-- default file list -->
-## Files to look at
+## Files to Review
 
 * [Form1.cs](./CS/Dashboard_CreateGrid/Form1.cs) (VB: [Form1.vb](./VB/Dashboard_CreateGrid/Form1.vb))
 <!-- default file list end -->
